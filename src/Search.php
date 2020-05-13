@@ -6,6 +6,7 @@ use Rct567\DomQuery\DomQuery;
 use Sunra\PhpSimple\HtmlDomParser;
 use Symfony\Component\DomCrawler\Crawler;
 use Wa72\HtmlPageDom\HtmlPage;
+use function GuzzleHttp\Psr7\str;
 use function simplehtmldom_1_5\str_get_html;
 
 class Search
@@ -284,6 +285,7 @@ class Search
      */
     public function getItems($text)
     {
+        $text = str_replace(',', '', $text);
         $value = explode('(', $text);
 
         if (isset($value[1])) {
